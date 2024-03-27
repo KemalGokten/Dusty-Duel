@@ -1,3 +1,14 @@
+body {
+  user-select: none;
+  -webkit-user-select: none; /* For Safari */
+  -moz-user-select: none; /* For Firefox */
+  -ms-user-select: none; /* For Internet Explorer/Edge */
+}
+
+img {
+  pointer-events: none;
+}
+
 #start-page {
   background-image: url(../assets/images/start_page_background.png);
   background-position: center;
@@ -9,6 +20,7 @@
   justify-content: center;
   align-items: center;
   color: navajowhite;
+  text-shadow: 0px 10px 12px navajowhite;
 }
 
 #start-page > h1 {
@@ -16,11 +28,45 @@
 }
 
 #game-container {
+  position: relative;
   display: none;
+  overflow: hidden;
 }
 
 #options-menu {
   display: none;
+}
+
+#town-container {
+  display: none;
+  background-image: url(../assets/images/town.png);
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+}
+
+#level1-container {
+  display: none;
+  background-image: url(../assets/images/level1.png);
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+}
+
+#level2-container {
+  display: none;
+  background-image: url(../assets/images/level2.png);
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+}
+
+#level3-container {
+  display: none;
+  background-image: url(../assets/images/level3.png);
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
 }
 
 @import url("https://fonts.googleapis.com/css?family=Fjalla+One");
@@ -34,27 +80,17 @@
   letter-spacing: 0.3rem;
   position: relative;
 
-  -webkit-transition: all 1000ms cubic-bezier(0.89, 0, 0.14, 1); /* older webkit */
+  -webkit-transition: all 1000ms cubic-bezier(0.89, 0, 0.14, 1);
   -webkit-transition: all 1000ms cubic-bezier(0.89, -0.17, 0.14, 1.225);
   -moz-transition: all 1000ms cubic-bezier(0.89, -0.17, 0.14, 1.225);
   -o-transition: all 1000ms cubic-bezier(0.89, -0.17, 0.14, 1.225);
-  transition: all 1000ms cubic-bezier(0.89, -0.17, 0.14, 1.225); /* custom */
+  transition: all 1000ms cubic-bezier(0.89, -0.17, 0.14, 1.225);
 
-  -webkit-transition-timing-function: cubic-bezier(
-    0.89,
-    0,
-    0.14,
-    1
-  ); /* older webkit */
+  -webkit-transition-timing-function: cubic-bezier(0.89, 0, 0.14, 1);
   -webkit-transition-timing-function: cubic-bezier(0.89, -0.17, 0.14, 1.225);
   -moz-transition-timing-function: cubic-bezier(0.89, -0.17, 0.14, 1.225);
   -o-transition-timing-function: cubic-bezier(0.89, -0.17, 0.14, 1.225);
-  transition-timing-function: cubic-bezier(
-    0.89,
-    -0.17,
-    0.14,
-    1.225
-  ); /* custom */
+  transition-timing-function: cubic-bezier(0.89, -0.17, 0.14, 1.225);
 }
 
 .start-button .top {
@@ -62,22 +98,17 @@
   height: 12px;
   overflow: hidden;
   top: 0;
-  -webkit-transition: all 300ms cubic-bezier(1, 0, 0.025, 1); /* older webkit */
+  -webkit-transition: all 300ms cubic-bezier(1, 0, 0.025, 1);
   -webkit-transition: all 300ms cubic-bezier(1, -0.055, 0.025, 1.04);
   -moz-transition: all 300ms cubic-bezier(1, -0.055, 0.025, 1.04);
   -o-transition: all 300ms cubic-bezier(1, -0.055, 0.025, 1.04);
-  transition: all 300ms cubic-bezier(1, -0.055, 0.025, 1.04); /* custom */
+  transition: all 300ms cubic-bezier(1, -0.055, 0.025, 1.04);
 
-  -webkit-transition-timing-function: cubic-bezier(
-    1,
-    0,
-    0.025,
-    1
-  ); /* older webkit */
+  -webkit-transition-timing-function: cubic-bezier(1, 0, 0.025, 1);
   -webkit-transition-timing-function: cubic-bezier(1, -0.055, 0.025, 1.04);
   -moz-transition-timing-function: cubic-bezier(1, -0.055, 0.025, 1.04);
   -o-transition-timing-function: cubic-bezier(1, -0.055, 0.025, 1.04);
-  transition-timing-function: cubic-bezier(1, -0.055, 0.025, 1.04); /* custom */
+  transition-timing-function: cubic-bezier(1, -0.055, 0.025, 1.04);
 
   -webkit-transition-delay: 0.35s;
   -moz-transition-delay: 0.35s;
@@ -91,22 +122,17 @@
   height: 12px;
   overflow: hidden;
   bottom: 0;
-  -webkit-transition: all 300ms cubic-bezier(1, 0, 0.025, 1); /* older webkit */
+  -webkit-transition: all 300ms cubic-bezier(1, 0, 0.025, 1);
   -webkit-transition: all 300ms cubic-bezier(1, -0.055, 0.025, 1.04);
   -moz-transition: all 300ms cubic-bezier(1, -0.055, 0.025, 1.04);
   -o-transition: all 300ms cubic-bezier(1, -0.055, 0.025, 1.04);
-  transition: all 300ms cubic-bezier(1, -0.055, 0.025, 1.04); /* custom */
+  transition: all 300ms cubic-bezier(1, -0.055, 0.025, 1.04);
 
-  -webkit-transition-timing-function: cubic-bezier(
-    1,
-    0,
-    0.025,
-    1
-  ); /* older webkit */
+  -webkit-transition-timing-function: cubic-bezier(1, 0, 0.025, 1);
   -webkit-transition-timing-function: cubic-bezier(1, -0.055, 0.025, 1.04);
   -moz-transition-timing-function: cubic-bezier(1, -0.055, 0.025, 1.04);
   -o-transition-timing-function: cubic-bezier(1, -0.055, 0.025, 1.04);
-  transition-timing-function: cubic-bezier(1, -0.055, 0.025, 1.04); /* custom */
+  transition-timing-function: cubic-bezier(1, -0.055, 0.025, 1.04);
 
   -webkit-transition-delay: 0.35s;
   -moz-transition-delay: 0.35s;
@@ -152,28 +178,48 @@
   margin-top: 12px;
   right: -35px;
 
-  -webkit-transition: all 1000ms cubic-bezier(0.89, 0, 0.14, 1); /* older webkit */
+  -webkit-transition: all 1000ms cubic-bezier(0.89, 0, 0.14, 1);
   -webkit-transition: all 1000ms cubic-bezier(0.89, -0.17, 0.14, 1.225);
   -moz-transition: all 1000ms cubic-bezier(0.89, -0.17, 0.14, 1.225);
   -o-transition: all 1000ms cubic-bezier(0.89, -0.17, 0.14, 1.225);
-  transition: all 1000ms cubic-bezier(0.89, -0.17, 0.14, 1.225); /* custom */
+  transition: all 1000ms cubic-bezier(0.89, -0.17, 0.14, 1.225);
 
-  -webkit-transition-timing-function: cubic-bezier(
-    0.89,
-    0,
-    0.14,
-    1
-  ); /* older webkit */
+  -webkit-transition-timing-function: cubic-bezier(0.89, 0, 0.14, 1);
   -webkit-transition-timing-function: cubic-bezier(0.89, -0.17, 0.14, 1.225);
   -moz-transition-timing-function: cubic-bezier(0.89, -0.17, 0.14, 1.225);
   -o-transition-timing-function: cubic-bezier(0.89, -0.17, 0.14, 1.225);
-  transition-timing-function: cubic-bezier(
-    0.89,
-    -0.17,
-    0.14,
-    1.225
-  ); /* custom */
+  transition-timing-function: cubic-bezier(0.89, -0.17, 0.14, 1.225);
 }
 .start-button:hover:before {
   width: 130%;
+}
+
+.loading-container {
+  width: 100%;
+  height: 100vh;
+  background-color: #2c2c2c;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading-bar {
+  width: 60%;
+  height: 20px;
+  background-color: #4d4d4d;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.progress {
+  display: block;
+  height: 100%;
+  background-color: #3b309e;
+  border-radius: 10px;
+}
+
+.loading-message {
+  color: #fff;
+  font-size: 18px;
 }
