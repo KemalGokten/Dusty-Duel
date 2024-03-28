@@ -1,41 +1,44 @@
 class Enemies {
-  constructor(levelIndex,player) {
+  constructor(levelIndex, player) {
     this.enemyTypes = [
       {
         health: 100,
         damage: 10,
         armor: 0,
-        src: "../assets/images/bro5_idle0002@2x.png",
+        src: "../assets/images/enemyImages/enemy1/walk/bro1_walk0001@2x.png",
         width: 125,
         height: 125,
         xPosition: 25,
         yPosition: 200,
         className: "enemy1",
-        speed: 3
+        speed: 3,
+        animationFrames: enemyWalkImages[0],
       },
       {
         health: 100,
         damage: 20,
         armor: 10,
-        src: "../assets/images/bro5_idle0002@2x.png",
+        src: "../assets/images/enemyImages/enemy2/walk/bro5_walk0001@2x.png",
         width: 125,
         height: 125,
         xPosition: 25,
         yPosition: 200,
         className: "enemy1",
-        speed: 4
+        speed: 4,
+        animationFrames: enemyWalkImages[1],
       },
       {
         health: 100,
         damage: 30,
         armor: 30,
-        src: "../assets/images/bro5_idle0002@2x.png",
+        src: "../assets/images/enemyImages/enemy3/walk/bro3_walk0001@2x.png",
         width: 125,
         height: 125,
         xPosition: 25,
         yPosition: 200,
         className: "enemy1",
-        speed: 5
+        speed: 5,
+        animationFrames: enemyWalkImages[2],
       },
     ];
     this.enemies = [];
@@ -55,9 +58,12 @@ class Enemies {
       yPosition: this.enemyType.yPosition,
       src: this.enemyType.src,
       className: this.enemyType.className,
+      animationFrames: this.enemyType.animationFrames,
     });
     enemy.createGOElement(enemiesContainer);
     this.enemies.push(enemy);
+    enemy.setAnimationState("walk");
+    this.shouldMove = true;
   }
 }
 
@@ -73,8 +79,9 @@ class Enemy extends GameObject {
     yPosition = 0,
     width = 0,
     height = 0,
-    className}
-  ) {
+    className,
+    animationFrames,
+  }) {
     super({
       speed,
       src,
@@ -87,19 +94,73 @@ class Enemy extends GameObject {
       damage,
       armor,
       lives,
+      animationFrames,
     });
-
   }
 
   chasePlayer(playerX, playerY) {
-    super.moveGOPosition(playerX, playerY);
-  }
-
-  takeDamage(damage) {
-    // Apply armor reduction if needed
-    const effectiveDamage = Math.max(damage - this.armor, 0);
-
-    // Reduce enemy's health
-    this.health -= effectiveDamage;
+    if (this.shouldMove) {
+      super.moveGOPosition(playerX, playerY);
+    }
   }
 }
+
+const enemyWalkImages = [
+  // Enemy type 1 walk images
+  {
+    walk: [
+      "../assets/images/enemyImages/enemy1/walk/bro1_walk0001@2x.png",
+      "../assets/images/enemyImages/enemy1/walk/bro1_walk0002@2x.png",
+      "../assets/images/enemyImages/enemy1/walk/bro1_walk0003@2x.png",
+      "../assets/images/enemyImages/enemy1/walk/bro1_walk0004@2x.png",
+      "../assets/images/enemyImages/enemy1/walk/bro1_walk0005@2x.png",
+      "../assets/images/enemyImages/enemy1/walk/bro1_walk0006@2x.png",
+      "../assets/images/enemyImages/enemy1/walk/bro1_walk0007@2x.png",
+      "../assets/images/enemyImages/enemy1/walk/bro1_walk0008@2x.png",
+      "../assets/images/enemyImages/enemy1/walk/bro1_walk0009@2x.png",
+      "../assets/images/enemyImages/enemy1/walk/bro1_walk0010@2x.png",
+      "../assets/images/enemyImages/enemy1/walk/bro1_walk0011@2x.png",
+      "../assets/images/enemyImages/enemy1/walk/bro1_walk0012@2x.png",
+      "../assets/images/enemyImages/enemy1/walk/bro1_walk0013@2x.png",
+      "../assets/images/enemyImages/enemy1/walk/bro1_walk0014@2x.png",
+    ],
+  },
+  // Enemy type 2 walk images
+  {
+    walk: [
+      "../assets/images/enemyImages/enemy2/walk/bro5_walk0001@2x.png",
+      "../assets/images/enemyImages/enemy2/walk/bro5_walk0002@2x.png",
+      "../assets/images/enemyImages/enemy2/walk/bro5_walk0003@2x.png",
+      "../assets/images/enemyImages/enemy2/walk/bro5_walk0004@2x.png",
+      "../assets/images/enemyImages/enemy2/walk/bro5_walk0005@2x.png",
+      "../assets/images/enemyImages/enemy2/walk/bro5_walk0006@2x.png",
+      "../assets/images/enemyImages/enemy2/walk/bro5_walk0007@2x.png",
+      "../assets/images/enemyImages/enemy2/walk/bro5_walk0008@2x.png",
+      "../assets/images/enemyImages/enemy2/walk/bro5_walk0009@2x.png",
+      "../assets/images/enemyImages/enemy2/walk/bro5_walk0010@2x.png",
+      "../assets/images/enemyImages/enemy2/walk/bro5_walk0011@2x.png",
+      "../assets/images/enemyImages/enemy2/walk/bro5_walk0012@2x.png",
+      "../assets/images/enemyImages/enemy2/walk/bro5_walk0013@2x.png",
+      "../assets/images/enemyImages/enemy2/walk/bro5_walk0014@2x.png",
+    ],
+  },
+  // Enemy type 3 walk images
+  {
+    walk: [
+      "../assets/images/enemyImages/enemy3/walk/bro3_walk0001@2x.png",
+      "../assets/images/enemyImages/enemy3/walk/bro3_walk0002@2x.png",
+      "../assets/images/enemyImages/enemy3/walk/bro3_walk0003@2x.png",
+      "../assets/images/enemyImages/enemy3/walk/bro3_walk0004@2x.png",
+      "../assets/images/enemyImages/enemy3/walk/bro3_walk0005@2x.png",
+      "../assets/images/enemyImages/enemy3/walk/bro3_walk0006@2x.png",
+      "../assets/images/enemyImages/enemy3/walk/bro3_walk0007@2x.png",
+      "../assets/images/enemyImages/enemy3/walk/bro3_walk0008@2x.png",
+      "../assets/images/enemyImages/enemy3/walk/bro3_walk0009@2x.png",
+      "../assets/images/enemyImages/enemy3/walk/bro3_walk0010@2x.png",
+      "../assets/images/enemyImages/enemy3/walk/bro3_walk0011@2x.png",
+      "../assets/images/enemyImages/enemy3/walk/bro3_walk0012@2x.png",
+      "../assets/images/enemyImages/enemy3/walk/bro3_walk0013@2x.png",
+      "../assets/images/enemyImages/enemy3/walk/bro3_walk0014@2x.png",
+    ],
+  },
+];

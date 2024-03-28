@@ -6,9 +6,9 @@ class Bullet extends GameObject {
     dy,
   }) {
     super({
-      src: "../assets/images/arrow.png",
-      width: 50,
-      height: 50,
+      src: "../assets/images/bullet.png",
+      width: 25,
+      height: 10,
       damage: 30,
       speed: 10,
       className: "bullet",
@@ -32,5 +32,9 @@ class Bullet extends GameObject {
     this.element.style.left = this.xPosition + "px";
     this.element.style.top = this.yPosition + "px";
     this.element.style.transform = `rotate(${angle}deg)`;
+  }
+
+  startAnimation(){
+    
   }
 }

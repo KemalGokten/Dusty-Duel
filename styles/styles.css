@@ -69,6 +69,368 @@ img {
   width: 100vw;
 }
 
+.gold-counter {
+    position: absolute;
+    top: 20px; /* Adjust top position as needed */
+    right: 20px; /* Adjust right position as needed */
+    display: flex;
+    align-items: center;
+    background-color: #3498db; /* Gold color */
+    border-radius: 20px;
+    padding: 15px 25px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Add shadow for fancy effect */
+}
+
+.gold-icon img {
+    width: 30px; /* Adjust icon size as needed */
+    height: auto;
+    margin-right: 5px;
+}
+
+.gold-text {
+    font-size: 20px; /* Adjust text size as needed */
+    color: #000; /* Text color */
+}
+
+.health-box {
+    background-color: #ccc;
+    height: 15px;
+    width: 150px;
+    margin: 0 auto;
+    border: solid 1px #aaa;
+    position: absolute;
+  }
+  
+  .health-bar {
+    background-color: #007f00;
+    width: 100%; /* Changed to 100% to fill the .health-box */
+    height: 100%;
+    position: absolute;
+  }
+  
+  .health-bar-red {
+    width: 100%;
+    height: 100%;
+    background-color: #cc0000;
+    position: absolute;
+  }
+  
+
+
+img {
+  pointer-events: none;
+}
+
+#start-page {
+  background-image: url(../assets/images/start_page_background.png);
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: navajowhite;
+  text-shadow: 0px 10px 12px navajowhite;
+}
+
+#start-page > h1 {
+  margin-top: 35vh;
+}
+
+#game-container {
+  position: relative;
+  display: none;
+  overflow: hidden;
+}
+
+#options-menu {
+  display: none;
+}
+
+#town-container {
+  display: none;
+  background-image: url(../assets/images/town.png);
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+}
+
+#level1-container {
+  display: none;
+  background-image: url(../assets/images/level1.png);
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+}
+
+#level2-container {
+  display: none;
+  background-image: url(../assets/images/level2.png);
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+}
+
+#level3-container {
+  display: none;
+  background-image: url(../assets/images/level3.png);
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+}
+
+#level-selection {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.level-selection-container {
+  background-color: rgb(255, 255, 255);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.level-selection-container h2 {
+  margin-bottom: 10px;
+}
+
+.level-selection-container ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.level-selection-container li {
+  margin-bottom: 10px;
+}
+
+.level-selection-container button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.level-selection-container button:hover {
+  background-color: #45a049;
+}
+
+.hidden {
+  display: none !important;
+}
+
+
+@import url("https://fonts.googleapis.com/css?family=Fjalla+One");
+
+.start-button {
+  font-family: "Fjalla One", sans-serif;
+  padding: 1.2rem 2.5rem;
+  color: inherit;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.3rem;
+  position: relative;
+
+  -webkit-transition: all 1000ms cubic-bezier(0.89, 0, 0.14, 1);
+  -webkit-transition: all 1000ms cubic-bezier(0.89, -0.17, 0.14, 1.225);
+  -moz-transition: all 1000ms cubic-bezier(0.89, -0.17, 0.14, 1.225);
+  -o-transition: all 1000ms cubic-bezier(0.89, -0.17, 0.14, 1.225);
+  transition: all 1000ms cubic-bezier(0.89, -0.17, 0.14, 1.225);
+
+  -webkit-transition-timing-function: cubic-bezier(0.89, 0, 0.14, 1);
+  -webkit-transition-timing-function: cubic-bezier(0.89, -0.17, 0.14, 1.225);
+  -moz-transition-timing-function: cubic-bezier(0.89, -0.17, 0.14, 1.225);
+  -o-transition-timing-function: cubic-bezier(0.89, -0.17, 0.14, 1.225);
+  transition-timing-function: cubic-bezier(0.89, -0.17, 0.14, 1.225);
+}
+
+.start-button .top {
+  position: relative;
+  height: 12px;
+  overflow: hidden;
+  top: 0;
+  -webkit-transition: all 300ms cubic-bezier(1, 0, 0.025, 1);
+  -webkit-transition: all 300ms cubic-bezier(1, -0.055, 0.025, 1.04);
+  -moz-transition: all 300ms cubic-bezier(1, -0.055, 0.025, 1.04);
+  -o-transition: all 300ms cubic-bezier(1, -0.055, 0.025, 1.04);
+  transition: all 300ms cubic-bezier(1, -0.055, 0.025, 1.04);
+
+  -webkit-transition-timing-function: cubic-bezier(1, 0, 0.025, 1);
+  -webkit-transition-timing-function: cubic-bezier(1, -0.055, 0.025, 1.04);
+  -moz-transition-timing-function: cubic-bezier(1, -0.055, 0.025, 1.04);
+  -o-transition-timing-function: cubic-bezier(1, -0.055, 0.025, 1.04);
+  transition-timing-function: cubic-bezier(1, -0.055, 0.025, 1.04);
+
+  -webkit-transition-delay: 0.35s;
+  -moz-transition-delay: 0.35s;
+  -ms-transition-delay: 0.35s;
+  -o-transition-delay: 0.35s;
+  transition-delay: 0.35s;
+}
+
+.start-button .bottom {
+  position: relative;
+  height: 12px;
+  overflow: hidden;
+  bottom: 0;
+  -webkit-transition: all 300ms cubic-bezier(1, 0, 0.025, 1);
+  -webkit-transition: all 300ms cubic-bezier(1, -0.055, 0.025, 1.04);
+  -moz-transition: all 300ms cubic-bezier(1, -0.055, 0.025, 1.04);
+  -o-transition: all 300ms cubic-bezier(1, -0.055, 0.025, 1.04);
+  transition: all 300ms cubic-bezier(1, -0.055, 0.025, 1.04);
+
+  -webkit-transition-timing-function: cubic-bezier(1, 0, 0.025, 1);
+  -webkit-transition-timing-function: cubic-bezier(1, -0.055, 0.025, 1.04);
+  -moz-transition-timing-function: cubic-bezier(1, -0.055, 0.025, 1.04);
+  -o-transition-timing-function: cubic-bezier(1, -0.055, 0.025, 1.04);
+  transition-timing-function: cubic-bezier(1, -0.055, 0.025, 1.04);
+
+  -webkit-transition-delay: 0.35s;
+  -moz-transition-delay: 0.35s;
+  -ms-transition-delay: 0.35s;
+  -o-transition-delay: 0.35s;
+  transition-delay: 0.35s;
+}
+
+.start-button .bottom span {
+  top: -12px;
+  position: absolute;
+  left: 0;
+}
+
+.start-button:hover .top {
+  top: -10px;
+  -webkit-transition-delay: 0.35s;
+  -moz-transition-delay: 0.35s;
+  -ms-transition-delay: 0.35s;
+  -o-transition-delay: 0.35s;
+  transition-delay: 0.35s;
+}
+
+.start-button:hover .bottom {
+  bottom: -10px;
+  -webkit-transition-delay: 0.35s;
+  -moz-transition-delay: 0.35s;
+  -ms-transition-delay: 0.35s;
+  -o-transition-delay: 0.35s;
+  transition-delay: 0.35s;
+}
+.start-button:hover,
+.start-button:focus,
+.start-button:active {
+  margin-left: 10px;
+}
+.start-button:before {
+  content: "";
+  height: 1px;
+  width: 60px;
+  background-color: navajowhite;
+  position: absolute;
+  margin-top: 12px;
+  right: -35px;
+
+  -webkit-transition: all 1000ms cubic-bezier(0.89, 0, 0.14, 1);
+  -webkit-transition: all 1000ms cubic-bezier(0.89, -0.17, 0.14, 1.225);
+  -moz-transition: all 1000ms cubic-bezier(0.89, -0.17, 0.14, 1.225);
+  -o-transition: all 1000ms cubic-bezier(0.89, -0.17, 0.14, 1.225);
+  transition: all 1000ms cubic-bezier(0.89, -0.17, 0.14, 1.225);
+
+  -webkit-transition-timing-function: cubic-bezier(0.89, 0, 0.14, 1);
+  -webkit-transition-timing-function: cubic-bezier(0.89, -0.17, 0.14, 1.225);
+  -moz-transition-timing-function: cubic-bezier(0.89, -0.17, 0.14, 1.225);
+  -o-transition-timing-function: cubic-bezier(0.89, -0.17, 0.14, 1.225);
+  transition-timing-function: cubic-bezier(0.89, -0.17, 0.14, 1.225);
+}
+.start-button:hover:before {
+  width: 130%;
+}
+
+.loading-container {
+  width: 100%;
+  height: 100vh;
+  background-color: #2c2c2c;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading-bar {
+  width: 60%;
+  height: 20px;
+  background-color: #4d4d4d;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.progress {
+  display: block;
+  height: 100%;
+  background-color: #3b309e;
+  border-radius: 10px;
+}
+
+.loading-message {
+  color: #fff;
+  font-size: 18px;
+}
+
+#level-selection {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.level-selection-container {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.level-selection-container h2 {
+  margin-bottom: 10px;
+}
+
+.level-selection-container ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.level-selection-container li {
+  margin-bottom: 10px;
+}
+
+.level-selection-container button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.level-selection-container button:hover {
+  background-color: #45a049;
+}
+
 @import url("https://fonts.googleapis.com/css?family=Fjalla+One");
 
 .start-button {

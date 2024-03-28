@@ -9,6 +9,7 @@ const levelContainer = "level1-container";
 //Dispatch events variables
 const loadingCompleteEvent = "loadingComplete";
 const changeScene = "changeScene";
+const freezeTime = "frezeeTime";
 
 //Class Objects
 
@@ -52,8 +53,8 @@ document.addEventListener("DOMContentLoaded", () => {
       level: 3,
     },
   };
-  gameHandler = new GameHandler(sceneObjects);
   const sceneHandler = new SceneHandler(sceneObjects);
+  gameHandler = new GameHandler(sceneObjects);
 
   document.querySelector(startButtonClass).addEventListener("click", () => {
     dispatchCustomEvent(changeScene, [gameContainer, townContainer]);

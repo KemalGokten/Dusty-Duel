@@ -5,10 +5,15 @@ class GameHandler {
     this.player = null;
     this.sceneObjects = sceneObjects;
     this.bullets = [];
+    this.goldCount = 0;
 
     this.keydownListener = this.keydownListener.bind(this);
     this.keyupListener = this.keyupListener.bind(this);
     this.mouseDown = this.leftClickListener.bind(this);
+
+    this.selectLevel = this.selectLevel.bind(this);
+
+    this.addLevelSelectionListeners();
 
     this.frameCounter = 0;
     this.awake();
@@ -29,7 +34,6 @@ class GameHandler {
         this.Enemies = new Enemies(this.currentLevel, this.player);
         document.addEventListener("mousedown", this.mouseDown);
         this.isDoorOpen = true;
-
       }
 
       this.onStart();
@@ -42,7 +46,8 @@ class GameHandler {
 
   onStart() {
     this.player.createGOElement(this.containerElement);
-    
+    this.magazine = this.player.magazine;
+
     this.keyState = {
       w: false,
       s: false,
@@ -70,15 +75,9 @@ class GameHandler {
   }
 
   update() {
-    if (this.shouldPlayerMove) {
-      // Set the movement direction in the player object
-      this.player.movePlayer();
-    }
-
     if (!this.freezeTime) {
       this.updateBullets();
       this.checkDoorCollision();
-      this.checkNpcCollisions();
 
       this.createEnemy();
 
@@ -87,15 +86,24 @@ class GameHandler {
         while (i < this.Enemies?.enemies.length) {
           const enemy = this.Enemies.enemies[i];
           enemy.chasePlayer(this.player.xPosition, this.player.yPosition);
-          if (
-            this.frameCounter % 60 === 0 &&
-            this.checkCollision(enemy.element, this.player.element)
-          ) {
+          const isColliding = this.checkCollision(
+            enemy.element,
+            this.player.element
+          );
+          if (this.frameCounter % 60 === 0 && isColliding) {
             this.player.takeDamage(enemy.damage);
           }
+          enemy.shouldMove = !isColliding;
           i++;
         }
       }
+    }
+
+    this.checkNpcCollisions();
+
+    if (this.shouldPlayerMove) {
+      // Set the movement direction in the player object
+      this.player.movePlayer();
     }
 
     this.frameCounter++;
@@ -103,8 +111,10 @@ class GameHandler {
 
   createDoor() {
     // Create the door element
-    const imgPath = this.isDoorOpen ? "../assets/images/door_images/door_opening0008@2x.png" :"../assets/images/door_images/door_opening0001@2x.png";
-    this.door = new Door({src:imgPath});
+    const imgPath = this.isDoorOpen
+      ? "../assets/images/door_images/door_opening0008@2x.png"
+      : "../assets/images/door_images/door_opening0001@2x.png";
+    this.door = new Door({ src: imgPath });
     this.door.createGOElement(this.containerElement);
   }
   checkDoorCollision() {
@@ -137,7 +147,7 @@ class GameHandler {
       } else if (this.selectedLevel) {
         dispatchCustomEvent(changeScene, [
           gameContainer,
-          `Level${this.selectedLevel}`,
+          `${this.selectedLevel}`,
         ]);
       }
     }
@@ -152,11 +162,11 @@ class GameHandler {
         xPosition: npcObject.xPosition,
         yPosition: npcObject.yPosition,
         className: npcObject.className,
-        id : npcObject.id,
+        id: npcObject.id,
+        animationFrames: npcAnimationFrames,
       });
 
       npc.createGOElement(this.containerElement);
-
       this.npcs.push(npc);
     }
   }
@@ -170,10 +180,10 @@ class GameHandler {
 
     // Check for collision between the two objects
     if (
-      rect1.left < rect2.right &&
-      rect1.right > rect2.left &&
-      rect1.top < rect2.bottom &&
-      rect1.bottom > rect2.top
+      rect1.left + rect1.width / 2 < rect2.right &&
+      rect1.right - rect1.width / 2 > rect2.left &&
+      rect1.top + rect1.height / 2 < rect2.bottom &&
+      rect1.bottom - rect1.height / 2 > rect2.top
     ) {
       // Collision detected between the two objects
       // Handle collision logic here
@@ -197,6 +207,8 @@ class GameHandler {
       xPosition: playerObject.xPosition,
       yPosition: playerObject.yPosition,
       className: playerObject.className,
+      animationFrames: playerAnimationFrames,
+      magazine : playerObject.magazine,
     });
     this.player = player;
   }
@@ -206,9 +218,13 @@ class GameHandler {
     let dx = (this.keyState["d"] ? 1 : 0) - (this.keyState["a"] ? 1 : 0);
     let dy = (this.keyState["s"] ? 1 : 0) - (this.keyState["w"] ? 1 : 0);
 
-    dx !== 0 || dy !== 0
-      ? (this.shouldPlayerMove = true)
-      : (this.shouldPlayerMove = false);
+    if (dx !== 0 || dy !== 0) {
+      this.shouldPlayerMove = true;
+      this.player.setAnimationState("walk");
+    } else {
+      this.shouldPlayerMove = false;
+      this.player.setAnimationState("idle");
+    }
 
     // Set the movement direction in the player object
     this.player.setMovement(dx, dy);
@@ -231,6 +247,8 @@ class GameHandler {
       event.preventDefault();
       this.keyState[event.key] = true;
       this.updatePlayerMovement();
+    } else if (event.key === "r") {
+      this.reloadMagazine();
     }
   }
 
@@ -244,10 +262,14 @@ class GameHandler {
 
     if (event.key === " ") {
       this.freezeTime = !this.freezeTime;
+      dispatchCustomEvent(freezeTime, this.freezeTime);
     }
   }
 
   leftClickListener(event) {
+    if (this.magazine <= 0) {
+      return;
+    }
     if (event.button === 0 && !this.freezeTime) {
       const cursorX = event.clientX;
       const cursorY = event.clientY;
@@ -267,9 +289,15 @@ class GameHandler {
       });
       bullet.createGOElement(this.containerElement);
       this.bullets.push(bullet);
+      this.magazine -= 1;
+
+      this.player.setAnimationState("Fire");
     }
   }
 
+  reloadMagazine() {
+    this.magazine = this.player.magazine;
+  }
   updateBullets() {
     this.bullets.forEach((bullet, index) => {
       bullet.moveBullet();
@@ -278,14 +306,16 @@ class GameHandler {
       this.Enemies.enemies.forEach((enemy, enemyIndex) => {
         if (this.checkCollision(bullet.element, enemy.element)) {
           // Collision detected, remove the bullet and damage the enemy
-          bullet.element.remove();
+          bullet.onDestroy();
           this.bullets.splice(index, 1);
           enemy.takeDamage(bullet.damage);
 
           // If the enemy is destroyed, remove it from the array and DOM
           if (enemy.health <= 0) {
-            enemy.element.remove();
+            enemy.onDestroy();
             this.Enemies.enemies.splice(enemyIndex, 1);
+            this.goldCount += 10;
+            this.updateGoldCount();
           }
         }
       });
@@ -297,17 +327,21 @@ class GameHandler {
         bullet.yPosition < 0 ||
         bullet.yPosition > window.innerHeight
       ) {
-        bullet.element.remove();
+        bullet.onDestroy();
         this.bullets.splice(index, 1);
       }
     });
   }
 
+  updateGoldCount() {
+    document.getElementById("goldCount").textContent = this.goldCount;
+  }
+
   checkNpcCollisions() {
     const { newX, newY } = this.player.calculateNextFrameMove();
-  
+
     let collidesWithNpc = false;
-  
+
     // Check collision with each NPC
     for (let npc of this.npcs) {
       const npcRect = npc.element.getBoundingClientRect();
@@ -319,18 +353,57 @@ class GameHandler {
       ) {
         // Collision detected with at least one NPC
         collidesWithNpc = true;
-        if (npc.id === "LevelNpc" && !this.isDoorOpen) {
-          this.door.openDoorAnimation().then(() => {
-            this.selectedLevel = 1;
-          });
-          this.isDoorOpen = true; // Set to true to prevent re-triggering the animation
+        if (npc.id === "LevelNpc" && !this.isDoorOpen && !this.freezeTime) {
+          this.showLevelSelectionUI();
         }
         break; // No need to check further collisions
       }
     }
-  
+
+    if (this.shouldPlayerMove && !collidesWithNpc) {
+      this.hideLevelSelectionUI();
+    }
+
     // Set player movement availability based on collision status
     this.player.setPlayerMovementAvailability(!collidesWithNpc);
   }
-  
+
+  addLevelSelectionListeners() {
+    // Get references to the level selection buttons
+    const levelButtons = document.querySelectorAll(
+      ".level-selection-container button"
+    );
+
+    // Add event listener to each level selection button
+    levelButtons.forEach((button) => {
+      button.addEventListener("click", (event) => {
+        const level = event.target.dataset.level; // Assuming level information is stored in data-level attribute
+        this.selectLevel(level);
+      });
+    });
+  }
+
+  showLevelSelectionUI() {
+    var levelSelectionUI = document.getElementById("level-selection");
+    if (levelSelectionUI) {
+      levelSelectionUI.classList.remove("hidden");
+    }
+  }
+
+  hideLevelSelectionUI() {
+    var levelSelectionUI = document.getElementById("level-selection");
+    if (levelSelectionUI) {
+      levelSelectionUI.classList.add("hidden");
+    }
+  }
+
+  // Function to select a level
+  selectLevel(level) {
+    this.selectedLevel = level;
+
+    this.door.openDoorAnimation();
+    this.isDoorOpen = true; // Set to true to prevent re-triggering the animation
+
+    this.hideLevelSelectionUI();
+  }
 }

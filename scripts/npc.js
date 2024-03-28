@@ -7,6 +7,7 @@ class Npc extends GameObject {
     height = 0,
     className,
     id = null,
+    animationFrames,
   }) {
     super({
       src,
@@ -15,6 +16,7 @@ class Npc extends GameObject {
       width,
       height,
       className,
+      animationFrames
     });
     
     this.id = id; 
@@ -23,7 +25,7 @@ class Npc extends GameObject {
 
 const npcList = [
   {
-    src: "../assets/images/bro5_idle0002@2x.png",
+    src: "../assets/images/npc/idle/jughead_idle0001@2x.png",
     width: 125,
     height: 125,
     xPosition: 25,
@@ -32,7 +34,7 @@ const npcList = [
     className: "npc",
   },
   {
-    src: "../assets/images/bro5_idle0002@2x.png",
+    src: "../assets/images/npc/idle/jughead_idle0001@2x.png",
     width: 125,
     height: 125,
     xPosition: 125,
@@ -41,7 +43,7 @@ const npcList = [
     className: "npc",
   },
   {
-    src: "../assets/images/bro5_idle0002@2x.png",
+    src: "../assets/images/npc/idle/jughead_idle0001@2x.png",
     width: 125,
     height: 125,
     xPosition: 1200,
@@ -51,7 +53,7 @@ const npcList = [
     id: "LevelNpc"
   },
   {
-    src: "../assets/images/bro5_idle0002@2x.png",
+    src: "../assets/images/npc/idle/jughead_idle0001@2x.png",
     width: 125,
     height: 125,
     xPosition: 1582,
@@ -60,6 +62,19 @@ const npcList = [
     className: "npc",
   },
 ];
+
+const npcAnimationFrames = {
+    idle: [
+      "../assets/images/npc/idle/jughead_idle0001@2x.png",
+      "../assets/images/npc/idle/jughead_idle0002@2x.png",
+      "../assets/images/npc/idle/jughead_idle0003@2x.png",
+      "../assets/images/npc/idle/jughead_idle0004@2x.png",
+      "../assets/images/npc/idle/jughead_idle0005@2x.png",
+      "../assets/images/npc/idle/jughead_idle0006@2x.png",
+      "../assets/images/npc/idle/jughead_idle0007@2x.png",
+      "../assets/images/npc/idle/jughead_idle0008@2x.png",
+    ],
+  };
 
 class Door extends GameObject {
   constructor({
@@ -111,5 +126,10 @@ class Door extends GameObject {
       animateFrame();
     });
   }
+
+  startAnimation(){
+    return;
+  }
+
   
 }

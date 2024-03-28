@@ -18,23 +18,37 @@
     </div>
 
     <div id="game-container">
-        <div id="town-container"></div>
-        <div id="level1-container"></div>
-        <div id="level2-container"></div>
-        <div id="level3-container"></div>
-        
+      <div class="gold-counter">
+        <div class="gold-icon">
+          <img src="../assets/images/gold.png" alt="Gold Icon" />
+        </div>
+        <div class="gold-text">
+          <span id="goldCount">0</span>
+        </div>
+      </div>
+      <div id="town-container"></div>
+      <div id="level1-container"></div>
+      <div id="level2-container"></div>
+      <div id="level3-container"></div>
     </div>
 
     <div class="loading-container">
-        <div class="loading-bar">
-          <span class="progress"></span>
-        </div>
-        <div class="loading-message"></div>
+      <div class="loading-bar">
+        <span class="progress"></span>
       </div>
-      
+      <div class="loading-message"></div>
+    </div>
 
-
-    
+    <div id="level-selection" class="hidden">
+      <div class="level-selection-container">
+        <h2>Choose a Level</h2>
+        <ul>
+          <li><button data-level="Level1">Level 1</button></li>
+          <li><button data-level="Level2">Level 2</button></li>
+          <li><button data-level="Level3">Level 3</button></li>
+        </ul>
+      </div>
+    </div>
 
     <div id="options-menu">
       <h2>Options</h2>
@@ -49,6 +63,5 @@
     <script src="scripts/enemy.js"></script>
     <script src="scripts/bullet.js"></script>
     <script src="scripts/npc.js"></script>
-
   </body>
 </html>
