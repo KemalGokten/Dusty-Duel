@@ -47,6 +47,14 @@ class Enemies {
   }
 
   createEnemy(enemiesContainer) {
+    const yRandom = getRandomValue(200, 675);
+    const randomChoice = Math.round(getRandomValue(0, 1));
+
+    let xRandom = 1582 + this.enemyType.width;
+    if (randomChoice === 1) {
+      xRandom = 0 - this.enemyType.width;
+    }
+
     const enemy = new Enemy({
       health: this.enemyType.health,
       damage: this.enemyType.damage,
@@ -54,12 +62,13 @@ class Enemies {
       speed: this.enemyType.speed,
       width: this.enemyType.width,
       height: this.enemyType.height,
-      xPosition: this.enemyType.xPosition,
-      yPosition: this.enemyType.yPosition,
+      xPosition: xRandom,
+      yPosition: yRandom,
       src: this.enemyType.src,
       className: this.enemyType.className,
       animationFrames: this.enemyType.animationFrames,
     });
+
     enemy.createGOElement(enemiesContainer);
     this.enemies.push(enemy);
     enemy.setAnimationState("walk");

@@ -22,6 +22,20 @@ function dispatchCustomEvent(customEventName, data) {
   document.dispatchEvent(customEvent);
 }
 
+//Custom method to generate random value between min and max
+function getRandomValue(minValue, maxValue) {
+  // Generate a random number between 0 (inclusive) and 1 (exclusive)
+  const randomNumber = Math.random();
+
+  // Scale the random number to the range between 200 and 675
+  const randomValue = minValue + randomNumber * (maxValue - minValue);
+
+  // Round the random value to an integer (optional)
+  const roundedRandomValue = Math.round(randomValue);
+
+  return roundedRandomValue;
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   const sceneObjects = {
     [startPage]: {
