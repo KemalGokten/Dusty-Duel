@@ -208,7 +208,7 @@ class GameHandler {
       yPosition: playerObject.yPosition,
       className: playerObject.className,
       animationFrames: playerAnimationFrames,
-      magazine : playerObject.magazine,
+      magazine: playerObject.magazine,
     });
     this.player = player;
   }
