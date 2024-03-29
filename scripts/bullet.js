@@ -1,12 +1,7 @@
 class Bullet extends GameObject {
-  constructor({
-    xPosition,
-    yPosition,
-    dx,
-    dy,
-  }) {
+  constructor({ xPosition, yPosition, dx, dy }) {
     super({
-      src: "../assets/images/bullet.png",
+      src: "assets/images/bullet.png",
       width: 25,
       height: 10,
       damage: 30,
@@ -34,7 +29,5 @@ class Bullet extends GameObject {
     this.element.style.transform = `rotate(${angle}deg)`;
   }
 
-  startAnimation(){
-    
-  }
+  startAnimation() {}
 }

@@ -46,7 +46,6 @@ class Player extends GameObject {
     this.healthContainer?.remove();
   }
 
-
   movePlayer() {
     if (this.canMove) {
       const { newX, newY } = this.calculateNextFrameMove();
@@ -59,7 +58,6 @@ class Player extends GameObject {
 
       // Call moveGO method from GameObject class
       this.moveGO(this.xPosition, this.yPosition);
-  
     } else {
       this.setAnimationState("idle"); // Set animation state to idle when not movin
     }
@@ -72,7 +70,7 @@ class Player extends GameObject {
     };
   }
 
-  takeDamage(damage){
+  takeDamage(damage) {
     super.takeDamage(damage);
     if (this.lives === 0) {
       setTimeout(() => {
@@ -80,8 +78,6 @@ class Player extends GameObject {
       }, 300);
     }
   }
-
-
 
   setMovement(dx, dy) {
     this.dx = dx;
@@ -94,7 +90,7 @@ class Player extends GameObject {
 }
 
 const playerObject = {
-  src: "../assets/images/bro5_idle0002@2x.png",
+  src: "assets/images/bro5_idle0002@2x.png",
   width: 125,
   height: 125,
   xPosition: 0,
@@ -105,52 +101,52 @@ const playerObject = {
 
 const playerAnimationFrames = {
   idle: [
-    "../assets/images/playerImages/idle/bro5_idle0001@2x.png",
-    "../assets/images/playerImages/idle/bro5_idle0002@2x.png",
-    "../assets/images/playerImages/idle/bro5_idle0003@2x.png",
-    "../assets/images/playerImages/idle/bro5_idle0004@2x.png",
-    "../assets/images/playerImages/idle/bro5_idle0005@2x.png",
-    "../assets/images/playerImages/idle/bro5_idle0006@2x.png",
-    "../assets/images/playerImages/idle/bro5_idle0007@2x.png",
-    "../assets/images/playerImages/idle/bro5_idle0008@2x.png",
+    "assets/images/playerImages/idle/bro5_idle0001@2x.png",
+    "assets/images/playerImages/idle/bro5_idle0002@2x.png",
+    "assets/images/playerImages/idle/bro5_idle0003@2x.png",
+    "assets/images/playerImages/idle/bro5_idle0004@2x.png",
+    "assets/images/playerImages/idle/bro5_idle0005@2x.png",
+    "assets/images/playerImages/idle/bro5_idle0006@2x.png",
+    "assets/images/playerImages/idle/bro5_idle0007@2x.png",
+    "assets/images/playerImages/idle/bro5_idle0008@2x.png",
   ],
   walk: [
-    "../assets/images/playerImages/walk/bro5_walk0001@2x.png",
-    "../assets/images/playerImages/walk/bro5_walk0002@2x.png",
-    "../assets/images/playerImages/walk/bro5_walk0003@2x.png",
-    "../assets/images/playerImages/walk/bro5_walk0004@2x.png",
-    "../assets/images/playerImages/walk/bro5_walk0005@2x.png",
-    "../assets/images/playerImages/walk/bro5_walk0006@2x.png",
-    "../assets/images/playerImages/walk/bro5_walk0007@2x.png",
-    "../assets/images/playerImages/walk/bro5_walk0008@2x.png",
-    "../assets/images/playerImages/walk/bro5_walk0009@2x.png",
-    "../assets/images/playerImages/walk/bro5_walk0010@2x.png",
-    "../assets/images/playerImages/walk/bro5_walk0011@2x.png",
-    "../assets/images/playerImages/walk/bro5_walk0012@2x.png",
-    "../assets/images/playerImages/walk/bro5_walk0013@2x.png",
-    "../assets/images/playerImages/walk/bro5_walk0014@2x.png",
+    "assets/images/playerImages/walk/bro5_walk0001@2x.png",
+    "assets/images/playerImages/walk/bro5_walk0002@2x.png",
+    "assets/images/playerImages/walk/bro5_walk0003@2x.png",
+    "assets/images/playerImages/walk/bro5_walk0004@2x.png",
+    "assets/images/playerImages/walk/bro5_walk0005@2x.png",
+    "assets/images/playerImages/walk/bro5_walk0006@2x.png",
+    "assets/images/playerImages/walk/bro5_walk0007@2x.png",
+    "assets/images/playerImages/walk/bro5_walk0008@2x.png",
+    "assets/images/playerImages/walk/bro5_walk0009@2x.png",
+    "assets/images/playerImages/walk/bro5_walk0010@2x.png",
+    "assets/images/playerImages/walk/bro5_walk0011@2x.png",
+    "assets/images/playerImages/walk/bro5_walk0012@2x.png",
+    "assets/images/playerImages/walk/bro5_walk0013@2x.png",
+    "assets/images/playerImages/walk/bro5_walk0014@2x.png",
   ],
   idleFire: [
-    "../assets/images/playerImages/idleFire/bro5_fire0001@2x.png",
-    "../assets/images/playerImages/idleFire/bro5_fire0002@2x.png",
-    "../assets/images/playerImages/idleFire/bro5_fire0003@2x.png",
-    "../assets/images/playerImages/idleFire/bro5_fire0004@2x.png",
-    "../assets/images/playerImages/idleFire/bro5_fire0005@2x.png",
+    "assets/images/playerImages/idleFire/bro5_fire0001@2x.png",
+    "assets/images/playerImages/idleFire/bro5_fire0002@2x.png",
+    "assets/images/playerImages/idleFire/bro5_fire0003@2x.png",
+    "assets/images/playerImages/idleFire/bro5_fire0004@2x.png",
+    "assets/images/playerImages/idleFire/bro5_fire0005@2x.png",
   ],
   walkFire: [
-    "../assets/images/playerImages/walkFire/bro5_walk_and_fire0001@2x.png",
-    "../assets/images/playerImages/walkFire/bro5_walk_and_fire0002@2x.png",
-    "../assets/images/playerImages/walkFire/bro5_walk_and_fire0003@2x.png",
-    "../assets/images/playerImages/walkFire/bro5_walk_and_fire0004@2x.png",
-    "../assets/images/playerImages/walkFire/bro5_walk_and_fire0005@2x.png",
-    "../assets/images/playerImages/walkFire/bro5_walk_and_fire0006@2x.png",
-    "../assets/images/playerImages/walkFire/bro5_walk_and_fire0007@2x.png",
-    "../assets/images/playerImages/walkFire/bro5_walk_and_fire0008@2x.png",
-    "../assets/images/playerImages/walkFire/bro5_walk_and_fire0009@2x.png",
-    "../assets/images/playerImages/walkFire/bro5_walk_and_fire0010@2x.png",
-    "../assets/images/playerImages/walkFire/bro5_walk_and_fire0011@2x.png",
-    "../assets/images/playerImages/walkFire/bro5_walk_and_fire0012@2x.png",
-    "../assets/images/playerImages/walkFire/bro5_walk_and_fire0013@2x.png",
-    "../assets/images/playerImages/walkFire/bro5_walk_and_fire0014@2x.png",
+    "assets/images/playerImages/walkFire/bro5_walk_and_fire0001@2x.png",
+    "assets/images/playerImages/walkFire/bro5_walk_and_fire0002@2x.png",
+    "assets/images/playerImages/walkFire/bro5_walk_and_fire0003@2x.png",
+    "assets/images/playerImages/walkFire/bro5_walk_and_fire0004@2x.png",
+    "assets/images/playerImages/walkFire/bro5_walk_and_fire0005@2x.png",
+    "assets/images/playerImages/walkFire/bro5_walk_and_fire0006@2x.png",
+    "assets/images/playerImages/walkFire/bro5_walk_and_fire0007@2x.png",
+    "assets/images/playerImages/walkFire/bro5_walk_and_fire0008@2x.png",
+    "assets/images/playerImages/walkFire/bro5_walk_and_fire0009@2x.png",
+    "assets/images/playerImages/walkFire/bro5_walk_and_fire0010@2x.png",
+    "assets/images/playerImages/walkFire/bro5_walk_and_fire0011@2x.png",
+    "assets/images/playerImages/walkFire/bro5_walk_and_fire0012@2x.png",
+    "assets/images/playerImages/walkFire/bro5_walk_and_fire0013@2x.png",
+    "assets/images/playerImages/walkFire/bro5_walk_and_fire0014@2x.png",
   ],
 };

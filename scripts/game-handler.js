@@ -112,8 +112,8 @@ class GameHandler {
   createDoor() {
     // Create the door element
     const imgPath = this.isDoorOpen
-      ? "../assets/images/door_images/door_opening0008@2x.png"
-      : "../assets/images/door_images/door_opening0001@2x.png";
+      ? "assets/images/door_images/door_opening0008@2x.png"
+      : "assets/images/door_images/door_opening0001@2x.png";
     this.door = new Door({ src: imgPath });
     this.door.createGOElement(this.containerElement);
   }
