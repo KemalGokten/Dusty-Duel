@@ -40,7 +40,7 @@ function getRandomValue(minValue, maxValue) {
   return roundedRandomValue;
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("load", () => {
   popupContainer = document.getElementById("popupContainer");
   const backgroundMusic = document.getElementById("background-music");
   revolverAudio = document.getElementById("revolver-sound");
