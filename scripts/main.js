@@ -12,7 +12,8 @@ const changeScene = "changeScene";
 const freezeTime = "frezeeTime";
 
 //DOM Elements
-const popupContainer = document.getElementById("popupContainer");
+let popupContainer;
+let revolverAudio;
 
 //Class Objects
 
@@ -40,7 +41,8 @@ function getRandomValue(minValue, maxValue) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
- 
+  popupContainer = document.getElementById("popupContainer");
+  revolverAudio = document.getElementById("revolver-sound");
 
   const sceneObjects = {
     [startPage]: {

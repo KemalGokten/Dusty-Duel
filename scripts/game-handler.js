@@ -290,12 +290,16 @@ class GameHandler {
       bullet.createGOElement(this.containerElement);
       this.bullets.push(bullet);
       this.magazine -= 1;
+      revolverAudio.src = "assets/sounds/revolver-shot.mp3";
+      revolverAudio.play();
 
       this.player.setAnimationState("Fire");
     }
   }
 
   reloadMagazine() {
+    revolverAudio.src = "assets/sounds/revolver-reload.mp3";
+    revolverAudio.play();
     this.magazine = this.player.magazine;
   }
   updateBullets() {
