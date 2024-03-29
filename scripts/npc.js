@@ -107,7 +107,7 @@ class Door extends GameObject {
   }
 
   openDoorAnimation() {
-    return new Promise((resolve, reject) => {
+ 
       const animationInterval = 100; // Interval between image changes in milliseconds
       let currentIndex = 0;
       const animationElement = this.element;
@@ -118,13 +118,12 @@ class Door extends GameObject {
           animationElement.src = this.imagePaths[currentIndex];
           setTimeout(animateFrame, animationInterval);
         } else {
-          resolve(true); // Resolve the Promise when the animation is complete
+          return true 
         }
       };
 
       // Start the animation loop
       animateFrame();
-    });
   }
 
   startAnimation() {
