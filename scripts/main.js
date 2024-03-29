@@ -40,6 +40,8 @@ function getRandomValue(minValue, maxValue) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+ 
+
   const sceneObjects = {
     [startPage]: {
       element: document.getElementById(startPage),
@@ -73,26 +75,27 @@ document.addEventListener("DOMContentLoaded", () => {
   const sceneHandler = new SceneHandler(sceneObjects);
   gameHandler = new GameHandler(sceneObjects);
 
-  
   const agreeButton = document.getElementById("agree-button");
   const agreeCheckbox = document.getElementById("agree-checkbox");
 
   // Add event listener to the agree button
-  agreeButton.addEventListener("click", function() {
-      // Check if the checkbox is checked
-      if (agreeCheckbox.checked) {
-          // Close the popup container
-          popupContainer.style.display = "none";
-      } else {
-          // If the checkbox is not checked, show an alert or perform other actions
-          alert("Please agree to the terms and conditions or you won't be able to play the game.");
-      }
+  agreeButton.addEventListener("click", function () {
+    // Check if the checkbox is checked
+    if (agreeCheckbox.checked) {
+      // Close the popup container
+      popupContainer.style.display = "none";
+      const backgroundMusic = document.getElementById("background-music");
+
+      backgroundMusic.play();
+    } else {
+      // If the checkbox is not checked, show an alert or perform other actions
+      alert(
+        "Please agree to the terms and conditions or you won't be able to play the game."
+      );
+    }
   });
 
   document.querySelector(startButtonClass).addEventListener("click", () => {
     dispatchCustomEvent(changeScene, [gameContainer, townContainer]);
   });
-
-  
-  
 });
