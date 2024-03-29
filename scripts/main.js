@@ -42,7 +42,11 @@ function getRandomValue(minValue, maxValue) {
 
 document.addEventListener("DOMContentLoaded", () => {
   popupContainer = document.getElementById("popupContainer");
+  const backgroundMusic = document.getElementById("background-music");
   revolverAudio = document.getElementById("revolver-sound");
+  
+  backgroundMusic.volume = 0.6;
+  revolverAudio.volume = 0.8
 
   const sceneObjects = {
     [startPage]: {
@@ -86,8 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (agreeCheckbox.checked) {
       // Close the popup container
       popupContainer.style.display = "none";
-      const backgroundMusic = document.getElementById("background-music");
-
+      
       backgroundMusic.play();
     } else {
       // If the checkbox is not checked, show an alert or perform other actions
