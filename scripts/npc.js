@@ -16,16 +16,16 @@ class Npc extends GameObject {
       width,
       height,
       className,
-      animationFrames
+      animationFrames,
     });
-    
-    this.id = id; 
+
+    this.id = id;
   }
 }
 
 const npcList = [
   {
-    src: "../assets/images/npc/idle/jughead_idle0001@2x.png",
+    src: "assets/images/npc/idle/jughead_idle0001@2x.png",
     width: 125,
     height: 125,
     xPosition: 25,
@@ -34,7 +34,7 @@ const npcList = [
     className: "npc",
   },
   {
-    src: "../assets/images/npc/idle/jughead_idle0001@2x.png",
+    src: "assets/images/npc/idle/jughead_idle0001@2x.png",
     width: 125,
     height: 125,
     xPosition: 125,
@@ -43,17 +43,17 @@ const npcList = [
     className: "npc",
   },
   {
-    src: "../assets/images/npc/idle/jughead_idle0001@2x.png",
+    src: "assets/images/npc/idle/jughead_idle0001@2x.png",
     width: 125,
     height: 125,
     xPosition: 1200,
     yPosition: 200,
     transform: "scaleX(-1)",
     className: "npc",
-    id: "LevelNpc"
+    id: "LevelNpc",
   },
   {
-    src: "../assets/images/npc/idle/jughead_idle0001@2x.png",
+    src: "assets/images/npc/idle/jughead_idle0001@2x.png",
     width: 125,
     height: 125,
     xPosition: 1582,
@@ -64,21 +64,21 @@ const npcList = [
 ];
 
 const npcAnimationFrames = {
-    idle: [
-      "../assets/images/npc/idle/jughead_idle0001@2x.png",
-      "../assets/images/npc/idle/jughead_idle0002@2x.png",
-      "../assets/images/npc/idle/jughead_idle0003@2x.png",
-      "../assets/images/npc/idle/jughead_idle0004@2x.png",
-      "../assets/images/npc/idle/jughead_idle0005@2x.png",
-      "../assets/images/npc/idle/jughead_idle0006@2x.png",
-      "../assets/images/npc/idle/jughead_idle0007@2x.png",
-      "../assets/images/npc/idle/jughead_idle0008@2x.png",
-    ],
-  };
+  idle: [
+    "assets/images/npc/idle/jughead_idle0001@2x.png",
+    "assets/images/npc/idle/jughead_idle0002@2x.png",
+    "assets/images/npc/idle/jughead_idle0003@2x.png",
+    "assets/images/npc/idle/jughead_idle0004@2x.png",
+    "assets/images/npc/idle/jughead_idle0005@2x.png",
+    "assets/images/npc/idle/jughead_idle0006@2x.png",
+    "assets/images/npc/idle/jughead_idle0007@2x.png",
+    "assets/images/npc/idle/jughead_idle0008@2x.png",
+  ],
+};
 
 class Door extends GameObject {
   constructor({
-    src = "../assets/images/door_opening0008@2x.png",
+    src = "assets/images/door_opening0008@2x.png",
     xPosition = 875,
     yPosition = 150,
     width = 100,
@@ -95,14 +95,14 @@ class Door extends GameObject {
     });
 
     this.imagePaths = [
-      "../assets/images/door_images/door_opening0001@2x.png",
-      "../assets/images/door_images/door_opening0002@2x.png",
-      "../assets/images/door_images/door_opening0003@2x.png",
-      "../assets/images/door_images/door_opening0004@2x.png",
-      "../assets/images/door_images/door_opening0005@2x.png",
-      "../assets/images/door_images/door_opening0006@2x.png",
-      "../assets/images/door_images/door_opening0007@2x.png",
-      "../assets/images/door_images/door_opening0008@2x.png",
+      "assets/images/door_images/door_opening0001@2x.png",
+      "assets/images/door_images/door_opening0002@2x.png",
+      "assets/images/door_images/door_opening0003@2x.png",
+      "assets/images/door_images/door_opening0004@2x.png",
+      "assets/images/door_images/door_opening0005@2x.png",
+      "assets/images/door_images/door_opening0006@2x.png",
+      "assets/images/door_images/door_opening0007@2x.png",
+      "assets/images/door_images/door_opening0008@2x.png",
     ];
   }
 
@@ -111,7 +111,7 @@ class Door extends GameObject {
       const animationInterval = 100; // Interval between image changes in milliseconds
       let currentIndex = 0;
       const animationElement = this.element;
-  
+
       const animateFrame = () => {
         currentIndex++;
         if (currentIndex < this.imagePaths.length) {
@@ -121,15 +121,13 @@ class Door extends GameObject {
           resolve(true); // Resolve the Promise when the animation is complete
         }
       };
-  
+
       // Start the animation loop
       animateFrame();
     });
   }
 
-  startAnimation(){
+  startAnimation() {
     return;
   }
-
-  
 }
