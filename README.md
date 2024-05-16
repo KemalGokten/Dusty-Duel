@@ -1,6 +1,6 @@
 # Dusty Duel
 
-[Play Dusty Duel now!]([https://kemalgokten.github.io/game-project/](https://kemalgokten.github.io/Dusty-Duel/))
+[Play Dusty Duel now!](https://kemalgokten.github.io/Dusty-Duel/)
 
 ## Description
 
